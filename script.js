@@ -61,7 +61,7 @@ console.log("Todos os filmes foram indicados ao Oscar? ", indicadosOscar)
 const verificaOscar = (objeto, array)=>{
 
     if(objeto.indicadoOscar){
-        return array.push(objeto)
+        return array.push(objeto) 
     } else{
         alert("O objeto não foi adicionado ao array porque a condição booleana é false")
     }
@@ -75,6 +75,17 @@ verificaOscar(filme5, filmesBrasileiros)
 console.log(filmesBrasileiros)
 
     
+// refatorar o código da string assim:
+// for(i in allAgentes){
+//     let stringsAgentes =  Nome: ${allAgentes[i].nome.toUpperCase()}\n Idade: ${allAgentes[i].idade}\n Classe: ${allAgentes[i].classe}\n Existe: ${allAgentes[i].existe}\n 
+
+//     for(j of allAgentes[i].habilidades) {
+//         stringsAgentes +=  ${j}, 
+//     }
+//     console.log(stringsAgentes)
+// }
+
+
 // Colocando os Títulos em Maiúsculos:
 
 for (nome in filmesBrasileiros) {
@@ -116,6 +127,12 @@ const concatenaString = (objeto) => {
     return relatorio
 
 }
+
+// refatorar para deixar assim:
+// const relatorio = (obj) => {
+//     let str = Nome: ${obj.nome.toUpperCase()}\nIdade: ${obj.idade}\nAinda está vivo? ${obj.aindaVivo}\nPrincipais Jutsus: ${obj.principaisJutsus}
+//     console.log(str)
+// }
 
 for (i of filmesBrasileiros){
     console.log(concatenaString(i))
