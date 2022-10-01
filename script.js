@@ -56,7 +56,7 @@ const indicadosOscar = (filme1.indicadoOscar && filme2.indicadoOscar && filme3.i
 console.log("Todos os filmes foram indicados ao Oscar? ", indicadosOscar)
 
 
-// delação da função que insere os objetos no array com push e verifica quais foram indicados ao Oscar:
+// declaração da função que insere os objetos no array com push e verifica quais foram indicados ao Oscar:
 
 const verificaOscar = (objeto, array)=>{
 
@@ -68,11 +68,10 @@ const verificaOscar = (objeto, array)=>{
 }
 
 // Chamando a função para verificar se objeto (filme) foi indicado ao Oscar.
-verificaOscar(filme1, filmesBrasileiros)
-verificaOscar(filme2, filmesBrasileiros)
-verificaOscar(filme3, filmesBrasileiros)
-verificaOscar(filme4, filmesBrasileiros)
-verificaOscar(filme5, filmesBrasileiros)
+const filmes = [filme1, filme2, filme3, filme4, filme5];
+for(i of filmes){
+    verificaOscar(i, filmesBrasileiros)
+}
 
 console.log(filmesBrasileiros)
 
@@ -80,83 +79,43 @@ console.log(filmesBrasileiros)
 //Criando relatório com nome em maiúsculo e com todas as propriedades de cada objeto guardadas em uma única string:
 
     for(i in filmesBrasileiros){
-         let stringsFilmes = `Filme: ${filmesBrasileiros[i].titulo.toUpperCase()}\n Ano: ${filmesBrasileiros[i].ano}\n IMDB: ${filmesBrasileiros[i].IMDB}\n Foi indicado ao Oscar? ${filmesBrasileiros[i].indicadoOscar}\n Prêmios Internacionais: ${filmesBrasileiros[i].premiosInternacionais}\n`
+         let stringsFilmes = `Filme: ${filmesBrasileiros[i].titulo.toUpperCase()}\nAno: ${filmesBrasileiros[i].ano}\nIMDB: ${filmesBrasileiros[i].IMDB}\nFoi indicado ao Oscar? ${filmesBrasileiros[i].indicadoOscar}\nPrêmios Internacionais: ${filmesBrasileiros[i].premiosInternacionais}\n`
          console.log(stringsFilmes)
-
-
-
-
-// Colocando os Títulos em Maiúsculos:
-
-for (nome in filmesBrasileiros) {
-    filmesBrasileiros[nome].titulo = filmesBrasileiros[nome].titulo.toUpperCase()
-}
-
-// faça um laço que guarde todos os valores da propriedade array do objeto em uma mesma string
-
-
-const premios = (objeto) => {
-    let stringPremios = ""
-    for (i of objeto.premiosInternacionais) {
-        stringPremios += i + ","
     }
-    return stringPremios
-}
 
-// Concatena o array de prêmios em cada objeto.
 
-for (i in filmesBrasileiros) {
-    filmesBrasileiros[i].premiosInternacionais = premios(filmesBrasileiros[i])
-}
+// Criando uma função que recebe um objeto e retorna o relatório de cada objeto
 
-// Imprime o resultado:
-
-for (i in filmesBrasileiros) {
-    console.log(filmesBrasileiros[i])
-}
-
-// Criando uma função que junte o array de string em apenas uma string:
-
-const concatenaString = (objeto) => {
-    var relatorio = ""
-    for (i in objeto) {
-
-        relatorio += i + ":" + objeto[i] + "\n"
-
-    }
-    return relatorio
-
-}
-
-// refatorar para deixar assim:
-// const relatorio = (obj) => {
-//     let str = Nome: ${obj.nome.toUpperCase()}\nIdade: ${obj.idade}\nAinda está vivo? ${obj.aindaVivo}\nPrincipais Jutsus: ${obj.principaisJutsus}
-//     console.log(str)
-// }
+ const relatorio = (objeto) => {
+    let stringRelatorio = `Filme: ${objeto.titulo.toUpperCase()}\nAno: ${objeto.ano}\nIMD: ${objeto.IMDB}\nIndicado ao Oscar? ${objeto.indicadoOscar}\nPrêmios Internacionais: ${objeto.premiosInternacionais}`
+        return stringRelatorio
+ }
 
 for (i of filmesBrasileiros){
-    console.log(concatenaString(i))
+    console.log(relatorio(i))
 }
 
 
-
-// Esta função deve receber um array de objetos e retornar um objeto que deve possuir apenas os itens que tenham o nome/título igual à string passada como parâmetro. Caso não exista um item, exiba um ALERT indicando que nenhum item foi encontrado.
+// Esta função recebe um array de objetos e retorna um objeto que deve possuir apenas os itens que tenham o nome/título igual à string passada como parâmetro. Caso não exista um item, exiba um ALERT indicando que nenhum item foi encontrado.
 
 
 const busca = (arrayObjeto, string) => {
 
     string = string.toUpperCase().trim()
     
+    // como apenas o relatório está em maiúsculo o título tive que colocar tb na propriedade do objeto nessa função.
+
     const buscaString = arrayObjeto.filter((arrayObjeto) =>{
-        return arrayObjeto.titulo === string
+        return arrayObjeto.titulo.toUpperCase() === string
      })
 
     if (buscaString.length === 0){
-        return alert("Nenhum item foi encontrado!")
+        alert("Nenhum item foi encontrado!")
     }else{
         return buscaString[0]
     }
-
+    
 }
 
-console.log(busca(filmesBrasileiros, "Carandirú"))
+console.log(busca(filmesBrasileiros, "CENTRAL DO BRASIL"))
+
