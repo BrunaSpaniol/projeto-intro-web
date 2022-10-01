@@ -56,7 +56,7 @@ const indicadosOscar = (filme1.indicadoOscar && filme2.indicadoOscar && filme3.i
 console.log("Todos os filmes foram indicados ao Oscar? ", indicadosOscar)
 
 
-// inserindo os objetos no array com push que verifica quais foram indicados ao Oscar:
+// delação da função que insere os objetos no array com push e verifica quais foram indicados ao Oscar:
 
 const verificaOscar = (objeto, array)=>{
 
@@ -67,23 +67,23 @@ const verificaOscar = (objeto, array)=>{
     }
 }
 
+// Chamando a função para verificar se objeto (filme) foi indicado ao Oscar.
 verificaOscar(filme1, filmesBrasileiros)
 verificaOscar(filme2, filmesBrasileiros)
 verificaOscar(filme3, filmesBrasileiros)
 verificaOscar(filme4, filmesBrasileiros)
 verificaOscar(filme5, filmesBrasileiros)
+
 console.log(filmesBrasileiros)
 
     
-// refatorar o código da string assim:
-// for(i in allAgentes){
-//     let stringsAgentes =  Nome: ${allAgentes[i].nome.toUpperCase()}\n Idade: ${allAgentes[i].idade}\n Classe: ${allAgentes[i].classe}\n Existe: ${allAgentes[i].existe}\n 
+//Criando relatório com nome em maiúsculo e com todas as propriedades de cada objeto guardadas em uma única string:
 
-//     for(j of allAgentes[i].habilidades) {
-//         stringsAgentes +=  ${j}, 
-//     }
-//     console.log(stringsAgentes)
-// }
+    for(i in filmesBrasileiros){
+         let stringsFilmes = `Filme: ${filmesBrasileiros[i].titulo.toUpperCase()}\n Ano: ${filmesBrasileiros[i].ano}\n IMDB: ${filmesBrasileiros[i].IMDB}\n Foi indicado ao Oscar? ${filmesBrasileiros[i].indicadoOscar}\n Prêmios Internacionais: ${filmesBrasileiros[i].premiosInternacionais}\n`
+         console.log(stringsFilmes)
+
+
 
 
 // Colocando os Títulos em Maiúsculos:
