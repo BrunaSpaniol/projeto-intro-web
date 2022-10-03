@@ -4,11 +4,15 @@
     text-decoration: none;
     text-decoration-style: none;
 }
+#container{
+    display: grid;
+    grid-template-rows: 20vh, 1fr, 20vh;
+    grid-template-columns: 2.5 vw, 5vw, 2.5vw;
+}
 
 header{
-    display: flex;
-    height: 10vh;
-    flex-direction: row;
+    grid-row: 1/2;
+    grid-column: 1/4;
     align-items: center;
     padding: 1%;
     background-color: #2B4570;
@@ -17,22 +21,24 @@ header{
 }
 
 main{
+    grid-row: 2/3;
+    grid-column: 1/4;
     background-color:#E5E5E5;
     padding: 4vh;
     display: flex;
     flex-direction: column;
     gap: 6vh;
     align-items: center;
-    text-align: center;
 }
 
 section{
     background-color:#E6AF2E;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: stretch;
     gap: 2vw; 
+    text-align: center;
     width:50vw;
     
 }
@@ -40,26 +46,35 @@ section{
 
 #titulo{
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 1.5 rem;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     color: #211c33;
+    padding: 2.0%;
     
 }
 
-ul{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
 li{
     list-style: none;
-    font-family: Helvetica, sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
     color: #373737;
     font-weight:300;
+    padding: 0.4%;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:center;
+    padding-bottom: 0.5%;
 }
+
+img{
+
+    width: 180 px;
+    height: 200px;
+ } 
 
 form, button{
     font-family: Arial, Helvetica, sans-serif;
@@ -68,18 +83,27 @@ form, button{
 button{
     border-style: hidden;
     border-radius: 1%;
+    size: 2rem;
+    color: #2B4570;
 
 }
 
 input{
     border-style: hidden;
-    border-radius: 1%;
-    width: 10vw;
+    border-radius: 3%;
+    width: 11vw;
+    height: 0.5vh;
+    padding: 1rem;
 }
+
 footer{
-    position: relative;
+    grid-row: 3/4;
+    grid-column: 1/4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
     height: 10vh;
-    bottom: 0%;
     background-color: #2B4570;
     font-family: Arial, Helvetica, sans-serif;
     color: #E5E5E5;
