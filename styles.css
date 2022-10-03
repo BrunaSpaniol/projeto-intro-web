@@ -1,6 +1,15 @@
+*{
+    margin: 0;
+    padding: 0%;
+    text-decoration: none;
+    text-decoration-style: none;
+}
+
 header{
     display: flex;
+    height: 10vh;
     flex-direction: row;
+    align-items: center;
     padding: 1%;
     background-color: #2B4570;
     font-family: Arial, Helvetica, sans-serif;
@@ -9,9 +18,10 @@ header{
 
 main{
     background-color:#E5E5E5;
-    padding: 1%;
+    padding: 4vh;
     display: flex;
     flex-direction: column;
+    gap: 6vh;
     align-items: center;
     text-align: center;
 }
@@ -20,12 +30,58 @@ section{
     background-color:#E6AF2E;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw; 
+    width:50vw;
     
 }
 
+
+#titulo{
+    text-decoration: none;
+    font-size: 1.5em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #211c33;
+    
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+li{
+    list-style: none;
+    font-family: Helvetica, sans-serif;
+    color: #373737;
+    font-weight:300;
+}
+
+form, button{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button{
+    border-style: hidden;
+    border-radius: 1%;
+
+}
+
+input{
+    border-style: hidden;
+    border-radius: 1%;
+    width: 10vw;
+}
 footer{
     position: relative;
+    height: 10vh;
     bottom: 0%;
     background-color: #2B4570;
     font-family: Arial, Helvetica, sans-serif;
+    color: #E5E5E5;
+    font-size: 1em;
 }
