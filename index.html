@@ -14,23 +14,24 @@
 <body>
 
     <div id="container">
-        <header>
+        <header id="header">
 
             <h1>Filmes Brasileiros Premiados Internacionalmente</h1>
 
         </header>
 
-        <main>
+        <main id="main">
 
-            <form>
+            <form id="form" action="#">
 
-                <label for="filme"></label>
-                <input type="text" placeholder="Busque um filme nacional:" name="filme" id="filme" />
-                <button  type="submit">Enviar</button>
+                <label for="buscafilme"></label>
+                <input type="text" placeholder="Busque um filme nacional:" name="name" id="buscafilme" />
+                <button id="button" onclick="pesquisa(event)" type="submit">Pesquisar</button>
 
             </form>
-
-            <section>
+<!--             
+            <div>
+                <section id="section1">
 
                 <img src="./media/centralDoBrasil.jpg" alt="Imagem promocional do filme Central do Brasil"/>
 
@@ -47,7 +48,7 @@
 
             </section>
 
-            <section>
+            <section id="section2">
 
                 <img src="./media/CidadedeDeus.jpg" alt="Imagem promocional filme Cidade de Deus"/>
 
@@ -62,7 +63,7 @@
 
             </section>
 
-            <section>
+            <section id=" section3">
 
                 <img src="./media/PAGADOR.jpg" alt="Imagem do filme O pagador de Promessa"/>
 
@@ -77,12 +78,11 @@
                 </ul>
 
             </section>
-
-
-
+    </div> -->
+        
         </main>
 
-        <footer>
+        <footer id="footer">
 
             <p>Bruna Spaniol</p>
             <p>Github: BrunaSpaniol</p>

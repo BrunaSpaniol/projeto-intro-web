@@ -2,21 +2,23 @@ const filmesBrasileiros = []
 
 const filme1 = {
     titulo: "Central do Brasil",
-    Ano: 1998,
+    ano: 1998,
     IMDB: 8.0,
     indicadoOscar: true,
     premiosInternacionais: ["Globo de Ouro", "Bafta", "Festival de Berlim"],
-    imagemFilme:"./media/centralDoBrasil.jpg"
+    imagemFilme:"./media/centralDoBrasil.jpg",
+    linkTitulo: "https://pt.wikipedia.org/wiki/Central_do_Brasil_(filme)"
 }
 
 
 const filme2 = {
     titulo: "Cidade de Deus",
-    Ano: 2002,
+    ano: 2002,
     IMDB: 8.6,
     indicadoOscar: true,
     premiosInternacionais: ["Festival de Havana", "Bafta", "Writers Guild of America"],
-    imagemFilme:"./media/CidadedeDeus.jpg"
+    imagemFilme:"./media/CidadedeDeus.jpg",
+    linkTitulo:"https://pt.wikipedia.org/wiki/Cidade_de_Deus_(filme)"
 }
 
 
@@ -42,7 +44,8 @@ const filme5 = {
     IMDB: 8.3,
     indicadoOscar: true,
     premiosInternacionais: ["Cannes", "Festival Cartagena", "San Francisco International Film Festival"],
-    imagemFilme:"./media/PAGADOR.jpg"
+    imagemFilme:"./media/PAGADOR.jpg",
+    linkTitulo: "https://pt.wikipedia.org/wiki/O_Pagador_de_Promessas"
 }
 
 // Média de notas no IMDB dos filmes brasileiros
@@ -87,7 +90,7 @@ console.log(filmesBrasileiros)
 // Criando uma função que recebe um objeto e retorna o relatório de cada objeto
 
  const relatorio = (objeto) => {
-    let stringRelatorio = `Filme: ${objeto.titulo.toUpperCase()}\nAno: ${objeto.ano}\nIMD: ${objeto.IMDB}\nIndicado ao Oscar? ${objeto.indicadoOscar}\nPrêmios Internacionais: ${objeto.premiosInternacionais}`
+    let stringRelatorio = `Filme: ${objeto.titulo.toUpperCase()}\nAno: ${objeto.ano}\nIMDB: ${objeto.IMDB}\nIndicado ao Oscar? ${objeto.indicadoOscar}\nPrêmios Internacionais: ${objeto.premiosInternacionais}`
         return stringRelatorio
  }
 
@@ -109,13 +112,64 @@ const busca = (arrayObjeto, string) => {
         return arrayObjeto.titulo.toUpperCase() === string
      })
 
-    if (buscaString.length === 0){
-        alert("Nenhum item foi encontrado!")
-    }else{
+    if (buscaString.length > 0){
         return buscaString[0]
+        
+    }else{
+        alert("Nenhum item foi encontrado!")
     }
     
 }
 
-console.log(busca(filmesBrasileiros, "CENTRAL DO BRASIL"))
+const main = document.getElementById("main");
+const div = document.createElement("div");
+div.setAttribute("id", "containerSection");
 
+// Alterado o código para que a tela de lista de itens crie os elementos da lista através de manipulação do DOM.
+    function addItem(div, main){
+
+    for(i of filmesBrasileiros){
+        imprimeElemento(i, div)
+    }
+    main.appendChild(div)
+    main.insertAdjacentElement("beforeend", div)
+
+}
+addItem(div, main)
+
+// A função recebe um objeto e a div container de sections e imprime os cards na tela.
+
+function imprimeElemento(objeto, div){
+    const section = document.createElement("section");
+        section.innerHTML += `<img src= ${objeto.imagemFilme} alt="Imagem promocional do filme "${objeto.titulo}"/>`
+        const ul = document.createElement("ul")
+        ul.innerHTML += `<li><a id="titulo" href=${objeto.linkTitulo} target="_blank">${objeto.titulo}</a></li>`
+        ul.innerHTML += `<li>Ano: ${objeto.ano}</li>`
+        ul.innerHTML += `<li>IMDB: ${objeto.IMDB}</li>`
+        ul.innerHTML += `<li>Indicado ao Oscar</li>`
+        ul.innerHTML +=`<li> Prêmios Internacionais: ${i.premiosInternacionais.join(`, `)} </li>`
+        section.appendChild(ul);
+        section.insertAdjacentElement("beforeend", ul)
+        div.appendChild(section)
+        div.insertAdjacentElement("beforeend", section)
+}
+
+
+// A função recebe o input, remove a div das sections e imprime o filme pesquisado.
+
+function pesquisa(event){
+    event.preventDefault()
+    const main = document.querySelector("main")
+    const input = document.querySelector('#buscafilme')
+    const string = input.value
+    while(string.length === 0){
+        alert("Digite alguma coisa para realizar a busca")
+    }
+    document.querySelector("#containerSection").remove()
+    const objeto = busca(filmesBrasileiros, string)
+    const div = document.createElement("div");
+    div.setAttribute("id", "containerSection"); 
+    imprimeElemento(objeto, div)
+    main.appendChild(div)
+    main.insertAdjacentElement("beforeend", div)
+}

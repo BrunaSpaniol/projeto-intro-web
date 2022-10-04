@@ -24,11 +24,19 @@ main{
     grid-row: 2/3;
     grid-column: 1/4;
     background-color:#E5E5E5;
-    padding: 4vh;
     display: flex;
     flex-direction: column;
-    gap: 6vh;
     align-items: center;
+    row-gap: 5vh;
+}
+
+div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    row-gap: 2vw;
+    background-color:#E5E5E5;
 }
 
 section{
@@ -76,7 +84,7 @@ img{
     height: 200px;
  } 
 
-form, button{
+form{
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -85,7 +93,7 @@ button{
     border-radius: 1%;
     size: 2rem;
     color: #2B4570;
-
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 input{
@@ -108,4 +116,12 @@ footer{
     font-family: Arial, Helvetica, sans-serif;
     color: #E5E5E5;
     font-size: 1em;
+}
+
+@media screen and (max-device-width : 480px) {
+    
+}
+
+@media screen and (min-device-width : 481px) and (max-device-width : 800px){
+    
 }
