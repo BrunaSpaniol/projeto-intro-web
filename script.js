@@ -121,11 +121,14 @@ const busca = (arrayObjeto, string) => {
     
 }
 
+// Alterado o código para que a tela de lista de itens crie os elementos da lista através de manipulação do DOM.
+
 const main = document.getElementById("main");
 const div = document.createElement("div");
 div.setAttribute("id", "containerSection");
 
-// Alterado o código para que a tela de lista de itens crie os elementos da lista através de manipulação do DOM.
+// A função que cria as sections:
+
     function addItem(div, main){
 
     for(i of filmesBrasileiros){
@@ -135,7 +138,8 @@ div.setAttribute("id", "containerSection");
     main.insertAdjacentElement("beforeend", div)
 
 }
-addItem(div, main)
+main.addEventListener(onload, addItem(div, main))
+// addItem(div, main)
 
 // A função recebe um objeto e a div container de sections e imprime os cards na tela.
 
@@ -155,6 +159,7 @@ function imprimeElemento(objeto, div){
 }
 
 
+
 // A função recebe o input, remove a div das sections e imprime o filme pesquisado.
 
 function pesquisa(event){
@@ -162,14 +167,16 @@ function pesquisa(event){
     const main = document.querySelector("main")
     const input = document.querySelector('#buscafilme')
     const string = input.value
-    while(string.length === 0){
+    if(string.length === 0){
         alert("Digite alguma coisa para realizar a busca")
+        hideAlert()
     }
     document.querySelector("#containerSection").remove()
     const objeto = busca(filmesBrasileiros, string)
     const div = document.createElement("div");
-    div.setAttribute("id", "containerSection"); 
+    div.setAttribute("id", "containerBusca"); 
     imprimeElemento(objeto, div)
     main.appendChild(div)
     main.insertAdjacentElement("beforeend", div)
 }
+

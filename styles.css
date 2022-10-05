@@ -3,11 +3,15 @@
     padding: 0%;
     text-decoration: none;
     text-decoration-style: none;
+    font-style: none;
+    text-decoration-color: none;
+
 }
 #container{
     display: grid;
     grid-template-rows: 20vh, 1fr, 20vh;
     grid-template-columns: 2.5 vw, 5vw, 2.5vw;
+    
 }
 
 header{
@@ -39,7 +43,19 @@ div{
     background-color:#E5E5E5;
 }
 
+#containerBusca{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    row-gap: 2vw;
+    background-color:#E5E5E5;
+    padding-top: 6.3%;
+    padding-bottom: 6.3%;
+}
+
 section{
+    
     background-color:#E6AF2E;
     display: flex;
     flex-direction: row;
@@ -48,27 +64,33 @@ section{
     gap: 2vw; 
     text-align: center;
     width:50vw;
+    border-radius: 1em;
     
 }
 
 
 #titulo{
     text-decoration: none;
-    font-size: 1.5 rem;
-    font-family: Arial, Helvetica, sans-serif;
+    font-style: none;
+    font-size: 1.5rem;
+    font-family: 'Noto Sans Mono', monospace;
     font-weight: bold;
     color: #211c33;
     padding: 2.0%;
     
 }
 
+#titulo:hover{
+    color: #E5E5E5;
+}
+
 
 li{
     list-style: none;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 1.1rem;
+    font-style: none;
+    font-family: 'Noto Sans Mono', monospace;
+    font-size: 1.rem;
     color: #373737;
-    font-weight:300;
     padding: 0.4%;
     display:flex;
     flex-wrap: wrap;
@@ -82,40 +104,65 @@ img{
 
     width: 180 px;
     height: 200px;
+    border-radius: 1em;
  } 
 
 form{
     font-family: Arial, Helvetica, sans-serif;
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
+
+
+input{
+    display: block;
+    border-style: hidden;
+    border-radius: 3%;
+    background-color:#ffffff;
+    width:45%;
+    padding: 0.5rem;
+        
+}
+
 
 button{
     border-style: hidden;
-    border-radius: 1%;
-    size: 2rem;
+    border-radius: 3%;
+    size: 5%;
+    padding: 0.5rem;
+    background-color:#ffffff;
     color: #2B4570;
+    border: #2B4570 1px solid;
     font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
 }
 
-input{
-    border-style: hidden;
-    border-radius: 3%;
-    width: 11vw;
-    height: 0.5vh;
-    padding: 1rem;
+button:hover{
+    background-color: #2B4570;
+    color: #E5E5E5;
+    
 }
+
+.link, p{
+    text-decoration: none;
+    color: #E5E5E5;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+}
+
 
 footer{
     grid-row: 3/4;
     grid-column: 1/4;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-evenly;
     height: 10vh;
     background-color: #2B4570;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #E5E5E5;
-    font-size: 1em;
 }
 
 @media screen and (max-device-width : 480px) {
@@ -123,5 +170,6 @@ footer{
 }
 
 @media screen and (min-device-width : 481px) and (max-device-width : 800px){
+
     
 }
