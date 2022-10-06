@@ -4,6 +4,9 @@
 
 }
 
+
+/* Esse é o conteiner em grid que contempla tudo que tem no body(header, main e footer). Cada linha é um elemento, não há colunas, pois os elementos são organizados em flex dentro dessas linhas */
+
 #containerBody{
     display: grid;
     grid-template-rows: 20vh, 1fr, 20vh;
@@ -55,6 +58,7 @@ main{
     /* background-color: #B26F14; */
 }
 
+/* Esse container contém todas as sections.É usado para apagar tudo antes de imprimir o resultado da busca*/
 div{
     display: flex;
     flex-direction: column;
@@ -62,6 +66,8 @@ div{
     justify-content: stretch;
     row-gap: 2vw;
 }
+
+/* Esse conteiner é a estilização da impressão do objeto que é buscado. Ele tem que ficar no centro da página */
 
 #containerBusca{
     display: flex;
@@ -73,6 +79,19 @@ div{
     padding-top: 6.3%;
     padding-bottom: 6.3%;
 }
+
+
+#containerSection1{
+    
+    background-image: url("./media/centralDoBrasilSemFundo2.png"); 
+    background-position: left;
+    background-size:cover;
+    background-repeat: no-repeat;
+    width: 98.7vw;
+    height: 97vh;
+
+}
+
 
 section{
     
@@ -92,14 +111,12 @@ section{
     display: flex;
     flex-direction: row-reverse;
     align-items: flex-start;
-    justify-content: stretch;
+    justify-content: center;
     gap: 2vw; 
     text-align: center;
-    width: 90%;
-    height: 90vh;
-    background: #F1EFF0;
-    /* background-image: url("./media/centralDoBrasilSemFundo2.png"); 
-    background-size: 50%; */
+    width: 50%;
+    height: 80vh;
+    background: rgb(241, 239, 240, 0.75);
     border: 1px hidden #75490D;
     border-radius: 18px;
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(64,24,1,0);  
@@ -123,13 +140,13 @@ section{
 
 
 li{
-    padding: 4%;
+    padding: 3%;
     display:flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    padding-bottom: 0.5%;
+    /* padding-bottom: 0.5%; */
 
 }
 
@@ -138,21 +155,20 @@ li{
     font-style: none;
     font-family: 'Barlow', sans-serif;
     font-weight:500;
-    font-size: 1.5em;
+    font-size: 1em;
     color:#0D0D0D;
 }
 
 img{
 
-    width: 50vw;
-    height:60vh;
-    align-self: flex-start;
+    width: 30vw;
+    height:30vh;
     border-radius: 18px;
  } 
 
- /* #imagem1{
-    width: 50vw;
-    height:60vh;
+  #imagem1{
+    width: 30vw;
+    height:30vh;
     align-self: flex-end;
     border-radius: 18px;
  } */

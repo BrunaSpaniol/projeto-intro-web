@@ -8,7 +8,7 @@ const filme1 = {
     premiosInternacionais: ["Globo de Ouro", "Bafta", "Festival de Berlim"],
     imagemFilme:"./media/centralDoBrasilSemFundo.png",
     linkTitulo: "https://pt.wikipedia.org/wiki/Central_do_Brasil_(filme)",
-    posicaoImagem:1
+    posicao:1
 }
 
 
@@ -20,7 +20,7 @@ const filme2 = {
     premiosInternacionais: ["Festival de Havana", "Bafta", "Writers Guild of America"],
     imagemFilme:"./media/cidadedeDeusSemFundo.png",
     linkTitulo:"https://pt.wikipedia.org/wiki/Cidade_de_Deus_(filme)",
-    posicaoImagem:2
+    posicao:2
 }
 
 
@@ -48,7 +48,7 @@ const filme5 = {
     premiosInternacionais: ["Cannes", "Festival Cartagena", "San Francisco International Film Festival"],
     imagemFilme:"./media/pagadorDePromessasSemFundo.png",
     linkTitulo: "https://pt.wikipedia.org/wiki/O_Pagador_de_Promessas",
-    posicaoImagem:3
+    posicao:3
 }
 
 // Média de notas no IMDB dos filmes brasileiros
@@ -128,7 +128,7 @@ const busca = (arrayObjeto, string) => {
 
 const main = document.getElementById("main");
 const div = document.createElement("div");
-div.setAttribute("id", "containerSection");
+div.setAttribute("class", "containerAllSection");
 
 
 // A função que cria as sections:
@@ -148,9 +148,11 @@ main.addEventListener(onload, addItem(div, main))
 // A função recebe um objeto e a div container de sections e imprime os cards na tela.
 
 function imprimeElemento(objeto, div){
-    const section = document.createElement("section");
-        section.setAttribute("id", `section${objeto.posicaoImagem}`)
-        section.innerHTML += `<img id="imagem${objeto.posicaoImagem}" src= ${objeto.imagemFilme} alt="Imagem promocional do filme "${objeto.titulo}"/>`
+        const divSection = document.createElement("div");
+        divSection.setAttribute("id", `containerSection${objeto.posicao}`);
+        const section = document.createElement("section");
+        section.setAttribute("id", `section${objeto.posicao}`)
+        section.innerHTML += `<img id="imagem${objeto.posicao}" src= ${objeto.imagemFilme} alt="Imagem promocional do filme "${objeto.titulo}"/>`
         const ul = document.createElement("ul")
         ul.innerHTML += `<li><a id="titulo" href=${objeto.linkTitulo} target="_blank">${objeto.titulo}</a></li>`
         ul.innerHTML += `<li id="textoLi">Ano: ${objeto.ano}</li>`
@@ -159,8 +161,9 @@ function imprimeElemento(objeto, div){
         ul.innerHTML +=`<li id="textoLi"> Prêmios Internacionais: ${i.premiosInternacionais.join(`, `)} </li>`
         section.appendChild(ul);
         section.insertAdjacentElement("beforeend", ul)
-        div.appendChild(section)
-        div.insertAdjacentElement("beforeend", section)
+        divSection.appendChild(section)
+        div.appendChild(divSection)
+        div.insertAdjacentElement("beforeend", divSection)
 }
 
 
