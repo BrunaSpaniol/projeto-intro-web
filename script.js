@@ -6,8 +6,9 @@ const filme1 = {
     IMDB: 8.0,
     indicadoOscar: true,
     premiosInternacionais: ["Globo de Ouro", "Bafta", "Festival de Berlim"],
-    imagemFilme:"./media/centralDoBrasil.jpg",
-    linkTitulo: "https://pt.wikipedia.org/wiki/Central_do_Brasil_(filme)"
+    imagemFilme:"./media/centralDoBrasilSemFundo.png",
+    linkTitulo: "https://pt.wikipedia.org/wiki/Central_do_Brasil_(filme)",
+    posicaoImagem:1
 }
 
 
@@ -17,8 +18,9 @@ const filme2 = {
     IMDB: 8.6,
     indicadoOscar: true,
     premiosInternacionais: ["Festival de Havana", "Bafta", "Writers Guild of America"],
-    imagemFilme:"./media/CidadedeDeus.jpg",
-    linkTitulo:"https://pt.wikipedia.org/wiki/Cidade_de_Deus_(filme)"
+    imagemFilme:"./media/cidadedeDeusSemFundo.png",
+    linkTitulo:"https://pt.wikipedia.org/wiki/Cidade_de_Deus_(filme)",
+    posicaoImagem:2
 }
 
 
@@ -44,8 +46,9 @@ const filme5 = {
     IMDB: 8.3,
     indicadoOscar: true,
     premiosInternacionais: ["Cannes", "Festival Cartagena", "San Francisco International Film Festival"],
-    imagemFilme:"./media/PAGADOR.jpg",
-    linkTitulo: "https://pt.wikipedia.org/wiki/O_Pagador_de_Promessas"
+    imagemFilme:"./media/pagadorDePromessasSemFundo.png",
+    linkTitulo: "https://pt.wikipedia.org/wiki/O_Pagador_de_Promessas",
+    posicaoImagem:3
 }
 
 // Média de notas no IMDB dos filmes brasileiros
@@ -127,6 +130,7 @@ const main = document.getElementById("main");
 const div = document.createElement("div");
 div.setAttribute("id", "containerSection");
 
+
 // A função que cria as sections:
 
     function addItem(div, main){
@@ -145,13 +149,14 @@ main.addEventListener(onload, addItem(div, main))
 
 function imprimeElemento(objeto, div){
     const section = document.createElement("section");
-        section.innerHTML += `<img src= ${objeto.imagemFilme} alt="Imagem promocional do filme "${objeto.titulo}"/>`
+        section.setAttribute("id", `section${objeto.posicaoImagem}`)
+        section.innerHTML += `<img id="imagem${objeto.posicaoImagem}" src= ${objeto.imagemFilme} alt="Imagem promocional do filme "${objeto.titulo}"/>`
         const ul = document.createElement("ul")
         ul.innerHTML += `<li><a id="titulo" href=${objeto.linkTitulo} target="_blank">${objeto.titulo}</a></li>`
-        ul.innerHTML += `<li>Ano: ${objeto.ano}</li>`
-        ul.innerHTML += `<li>IMDB: ${objeto.IMDB}</li>`
-        ul.innerHTML += `<li>Indicado ao Oscar</li>`
-        ul.innerHTML +=`<li> Prêmios Internacionais: ${i.premiosInternacionais.join(`, `)} </li>`
+        ul.innerHTML += `<li id="textoLi">Ano: ${objeto.ano}</li>`
+        ul.innerHTML += `<li id="textoLi">IMDB: ${objeto.IMDB}</li>`
+        ul.innerHTML += `<li id="textoLi">Indicado ao Oscar</li>`
+        ul.innerHTML +=`<li id="textoLi"> Prêmios Internacionais: ${i.premiosInternacionais.join(`, `)} </li>`
         section.appendChild(ul);
         section.insertAdjacentElement("beforeend", ul)
         div.appendChild(section)
