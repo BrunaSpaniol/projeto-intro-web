@@ -7,6 +7,7 @@ const filme1 = {
     indicadoOscar: true,
     premiosInternacionais: ["Globo de Ouro", "Bafta", "Festival de Berlim"],
     imagemFilme:"./media/centralDoBrasilSemFundo.png",
+    imagemBg: "./media/centralDoBrasilSemFundo3.png",
     linkTitulo: "https://pt.wikipedia.org/wiki/Central_do_Brasil_(filme)",
     posicao:1
 }
@@ -19,6 +20,7 @@ const filme2 = {
     indicadoOscar: true,
     premiosInternacionais: ["Festival de Havana", "Bafta", "Writers Guild of America"],
     imagemFilme:"./media/cidadedeDeusSemFundo.png",
+    imagemBg: "./media/cidadedeDeusSemFundo2.png",
     linkTitulo:"https://pt.wikipedia.org/wiki/Cidade_de_Deus_(filme)",
     posicao:2
 }
@@ -47,6 +49,7 @@ const filme5 = {
     indicadoOscar: true,
     premiosInternacionais: ["Cannes", "Festival Cartagena", "San Francisco International Film Festival"],
     imagemFilme:"./media/pagadorDePromessasSemFundo.png",
+    imagemBg: "./media/pagadorDePromessasSemFundo2.png",
     linkTitulo: "https://pt.wikipedia.org/wiki/O_Pagador_de_Promessas",
     posicao:3
 }
@@ -128,7 +131,7 @@ const busca = (arrayObjeto, string) => {
 
 const main = document.getElementById("main");
 const div = document.createElement("div");
-div.setAttribute("class", "containerAllSection");
+div.setAttribute("id", "containerAllSection");
 
 
 // A função que cria as sections:
@@ -149,11 +152,13 @@ main.addEventListener(onload, addItem(div, main))
 
 function imprimeElemento(objeto, div){
         const divSection = document.createElement("div");
+        divSection.setAttribute("class", "containerSection")
         divSection.setAttribute("id", `containerSection${objeto.posicao}`);
+        divSection.style =`background-image:url(${objeto.imagemBg})`;
         const section = document.createElement("section");
-        section.setAttribute("id", `section${objeto.posicao}`)
-        section.innerHTML += `<img id="imagem${objeto.posicao}" src= ${objeto.imagemFilme} alt="Imagem promocional do filme "${objeto.titulo}"/>`
-        const ul = document.createElement("ul")
+        section.setAttribute("id", `section${objeto.posicao}`);
+        section.innerHTML += `<img id="imagem${objeto.posicao}" src= ${objeto.imagemFilme} alt="imagens do filme"${objeto.titulo}"/>`
+        const ul = document.createElement("ul");
         ul.innerHTML += `<li><a id="titulo" href=${objeto.linkTitulo} target="_blank">${objeto.titulo}</a></li>`
         ul.innerHTML += `<li id="textoLi">Ano: ${objeto.ano}</li>`
         ul.innerHTML += `<li id="textoLi">IMDB: ${objeto.IMDB}</li>`
@@ -179,7 +184,7 @@ function pesquisa(event){
         alert("Digite alguma coisa para realizar a busca")
         hideAlert()
     }
-    document.querySelector("#containerSection").remove()
+    document.querySelector("#containerAllSection").remove()
     const objeto = busca(filmesBrasileiros, string)
     const div = document.createElement("div");
     div.setAttribute("id", "containerBusca"); 
