@@ -134,9 +134,13 @@ const div = document.createElement("div");
 div.setAttribute("id", "containerAllSection");
 
 
+//função que carrega os cards na home
+main.addEventListener(onload, addItem(div, main))
+
+
 // A função que cria as sections:
 
-    function addItem(div, main){
+function addItem(div, main){
 
     for(i of filmesBrasileiros){
         imprimeElemento(i, div)
@@ -145,8 +149,7 @@ div.setAttribute("id", "containerAllSection");
     main.insertAdjacentElement("beforeend", div)
 
 }
-main.addEventListener(onload, addItem(div, main))
-// addItem(div, main)
+
 
 // A função recebe um objeto e a div container de sections e imprime os cards na tela.
 
@@ -158,7 +161,7 @@ function imprimeElemento(objeto, div){
         const section = document.createElement("section");
         section.setAttribute("id", `section${objeto.posicao}`);
         section.innerHTML += `<img id="imagem${objeto.posicao}" src= ${objeto.imagemFilme} alt="imagens do filme"${objeto.titulo}"/>`
-        const ul = document.createElement("ul");
+        let ul = document.createElement("ul");
         ul.innerHTML += `<li><a id="titulo" href=${objeto.linkTitulo} target="_blank">${objeto.titulo}</a></li>`
         ul.innerHTML += `<li id="textoLi">Ano: ${objeto.ano}</li>`
         ul.innerHTML += `<li id="textoLi">IMDB: ${objeto.IMDB}</li>`
@@ -172,7 +175,6 @@ function imprimeElemento(objeto, div){
 }
 
 
-
 // A função recebe o input, remove a div das sections e imprime o filme pesquisado.
 
 function pesquisa(event){
@@ -180,16 +182,16 @@ function pesquisa(event){
     const main = document.querySelector("main")
     const input = document.querySelector('#buscafilme')
     const string = input.value
-    if(string.length === 0){
+    while(string.length === 0){
         alert("Digite alguma coisa para realizar a busca")
         hideAlert()
     }
     document.querySelector("#containerAllSection").remove()
     const objeto = busca(filmesBrasileiros, string)
     const div = document.createElement("div");
-    div.setAttribute("id", "containerBusca"); 
+    div.setAttribute("class", "containerBusca"); 
+    div.setAttribute("id", "containerAllSection")
     imprimeElemento(objeto, div)
     main.appendChild(div)
     main.insertAdjacentElement("beforeend", div)
 }
-
