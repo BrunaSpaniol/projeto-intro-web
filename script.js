@@ -151,6 +151,7 @@ function addItem(div, main){
 }
 
 
+
 // A função recebe um objeto e a div container de sections e imprime os cards na tela.
 
 function imprimeElemento(objeto, div){
@@ -175,6 +176,8 @@ function imprimeElemento(objeto, div){
 }
 
 
+
+
 // A função recebe o input, remove a div das sections e imprime o filme pesquisado.
 
 function pesquisa(event){
@@ -182,7 +185,7 @@ function pesquisa(event){
     const main = document.querySelector("main")
     const input = document.querySelector('#buscafilme')
     const string = input.value
-    while(string.length === 0){
+    if(string.length === 0){
         alert("Digite alguma coisa para realizar a busca")
         hideAlert()
     }
@@ -194,4 +197,15 @@ function pesquisa(event){
     imprimeElemento(objeto, div)
     main.appendChild(div)
     main.insertAdjacentElement("beforeend", div)
+}
+
+//A função de retorno à página inicial?
+
+function paginaInicial(event){
+    event.preventDefault
+    const main = document.querySelector("main")
+    document.querySelector("#containerAllSection").remove()
+    const div = document.createElement("div"); 
+    div.setAttribute("id", "containerAllSection")
+    addItem(div, main)
 }
