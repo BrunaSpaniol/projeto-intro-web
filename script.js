@@ -176,8 +176,6 @@ function imprimeElemento(objeto, div){
 }
 
 
-
-
 // A função recebe o input, remove a div das sections e imprime o filme pesquisado.
 
 function pesquisa(event){
@@ -202,7 +200,7 @@ function pesquisa(event){
 //A função de retorno à página inicial?
 
 function paginaInicial(event){
-    event.preventDefault
+    event.preventDefault()  
     const main = document.querySelector("main")
     document.querySelector("#containerAllSection").remove()
     const div = document.createElement("div"); 
