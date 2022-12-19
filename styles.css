@@ -1,115 +1,61 @@
 *{
     margin: 0;
     padding: 0%;
-    text-decoration: none;
-    text-decoration-style: none;
-    font-style: none;
-    text-decoration-color: none;
 
 }
-#container{
+
+
+/* Esse é o container em grid que contempla tudo que tem no body(header, main e footer). Cada linha é um elemento, não há colunas, pois os elementos são organizados em flex dentro dessas linhas */
+
+#containerBody{
     display: grid;
-    grid-template-rows: 20vh, 1fr, 20vh;
-    grid-template-columns: 2.5 vw, 5vw, 2.5vw;
+    grid-template-rows: 10vw, 1fr, 10vw;
+    grid-template-columns: 1fr;
     
 }
 
 header{
     grid-row: 1/2;
-    grid-column: 1/4;
+    grid-column: 1/2;
+    display: flex;
     align-items: center;
-    padding: 1%;
-    background-color: #2B4570;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #E5E5E5;
+    height: 5vw;
+    background-color: #B26F14;  
+
 }
+
+#textoHeader{
+    text-decoration: none;
+    text-decoration-style: none;
+    font-family: 'Inter Tight', sans-serif;
+    color: #F2F0F2;
+    text-transform: uppercase;
+    letter-spacing:0.1em;
+    word-spacing: 0.2em;
+    font-size: clamp(1em, 1em + 1vw, 3em);
+    padding-left: 3%;
+    text-shadow: 3px 4px 4px #A63F03;
+    cursor: pointer;
+
+}
+
+
 
 main{
     grid-row: 2/3;
-    grid-column: 1/4;
-    background-color:#E5E5E5;
+    grid-column: 1/2;
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 5vh;
-}
-
-div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: stretch;
-    row-gap: 2vw;
-    background-color:#E5E5E5;
-}
-
-#containerBusca{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: stretch;
-    row-gap: 2vw;
-    background-color:#E5E5E5;
-    padding-top: 6.3%;
-    padding-bottom: 6.3%;
-}
-
-section{
-    
-    background-color:#E6AF2E;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: stretch;
-    gap: 2vw; 
-    text-align: center;
-    width:50vw;
-    border-radius: 1em;
-    
+    row-gap: 1vw;
 }
 
 
-#titulo{
-    text-decoration: none;
-    font-style: none;
-    font-size: 1.5rem;
-    font-family: 'Noto Sans Mono', monospace;
-    font-weight: bold;
-    color: #211c33;
-    padding: 2.0%;
-    
-}
-
-#titulo:hover{
-    color: #E5E5E5;
-}
-
-
-li{
-    list-style: none;
-    font-style: none;
-    font-family: 'Noto Sans Mono', monospace;
-    font-size: 1.rem;
-    color: #373737;
-    padding: 0.4%;
-    display:flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items:center;
-    padding-bottom: 0.5%;
-}
-
-img{
-
-    width: 180 px;
-    height: 200px;
-    border-radius: 1em;
- } 
-
+/* Área de busca */
 form{
     font-family: Arial, Helvetica, sans-serif;
     width: 50vw;
+    padding-top: 2%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -122,21 +68,20 @@ input{
     border-style: hidden;
     border-radius: 3%;
     background-color:#ffffff;
-    width:45%;
+    width:20vw;
     padding: 0.5rem;
         
 }
 
 
 button{
-    border-style: hidden;
-    border-radius: 3%;
-    size: 5%;
+    size: 8vw;
     padding: 0.5rem;
     background-color:#ffffff;
     color: #2B4570;
     border: #2B4570 1px solid;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(0.8, 0.8 + 0.5vw, 0.9em);
     cursor: pointer;
 }
 
@@ -146,30 +91,186 @@ button:hover{
     
 }
 
-.link, p{
-    text-decoration: none;
-    color: #E5E5E5;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1em;
+/* Esse container contém todas as sections.É usado para apagar tudo antes de imprimir o resultado da busca*/
+div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    row-gap: 2vw;
 }
+
+/* Esse container é a estilização da impressão do objeto que é buscado. Ele tem que ficar no centro da página */
+
+.containerBusca{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    row-gap: 2vw;
+}
+
+/* Estilização padrão das sections */
+
+section{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw; 
+    text-align: center;
+    width: 34%;
+    height: 30vw;
+    background: rgb(241, 239, 240, 0.55);
+    border-radius: 7px;
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(64,24,1,0);  
+
+}
+
+#titulo{
+
+    text-decoration: none;
+    font-style: none;
+    font-size: clamp(1em, 1em + 1vw, 10rem);
+    font-family: 'Bebas Neue', cursive;
+    font-weight: bold;
+    color: #020D09;
+    
+}
+
+#titulo:hover{
+    color: #B26F14;
+}
+
+
+li{
+
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+
+}
+
+#textoLi{
+    list-style: none;
+    font-style: none;
+    font-family: 'Barlow', sans-serif;
+    font-weight:500;
+    font-size: clamp(0.7em, 0.7em + 0.4vw, 1.0em);
+    line-height:2vw;
+    color:#0D0D0D;
+}
+
+
+  img{
+    height: 22vw;
+    border-radius: 18px;
+    opacity: 0.85;
+ } 
+
+/* Divs em cada section, background com a imagem que ocupa toda a tela. */
+
+.containerSection {
+    
+    background-position: left;
+    background-size:cover;
+    background-repeat: no-repeat;
+    width: 98.7vw;
+    height: 42vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+
+#imagem1{
+    padding-left: 1rem;
+    align-self: center;
+    justify-self: center;
+    opacity: 0.85;
+ } 
+
+
+#containerSection2{
+
+    justify-content:flex-start;
+
+}
+
+#imagem2{
+    align-self: center;
+    justify-self: center;
+    padding-left: 5%;
+    opacity: 0.85;
+ } 
+
+#containerSection3{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:flex-end;
+    order: 10;
+
+}
+
+#imagem3{
+
+    border-radius: 18px;
+    padding-left: 5%;
+    justify-self: flex-start;
+    order: 0;
+    opacity: 0.85;
+ } 
 
 
 footer{
     grid-row: 3/4;
-    grid-column: 1/4;
+    grid-column:1/2;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 10vh;
-    background-color: #2B4570;
+    height: 5vw;
+    background-color: black;
 }
 
-@media screen and (max-device-width : 480px) {
-    
+.link, p{
+    text-decoration: none;
+    color: #E5E5E5;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(0.8em, 0.8em + 1vw, 1.1em)
 }
 
-@media screen and (min-device-width : 481px) and (max-device-width : 800px){
 
-    
+
+
+@media screen and (max-device-width : 800px){
+    header, footer{
+        height: 15vw;
+    }
+    section{
+        width: 50%;
+        height: 50vw;
+    }
+
+    img{
+        display: none;
+    }
+    div{
+        row-gap: 2vw;
+    }
+    .containerSection {
+        width: 98.7vw;
+        height: 60vw;
+
+    }
+    #textoLi{
+        line-height: 4vw;
+    }
+
 }

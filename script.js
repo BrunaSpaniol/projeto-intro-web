@@ -6,8 +6,10 @@ const filme1 = {
     IMDB: 8.0,
     indicadoOscar: true,
     premiosInternacionais: ["Globo de Ouro", "Bafta", "Festival de Berlim"],
-    imagemFilme:"./media/centralDoBrasil.jpg",
-    linkTitulo: "https://pt.wikipedia.org/wiki/Central_do_Brasil_(filme)"
+    imagemFilme:"./media/centralDoBrasilSemFundo.png",
+    imagemBg: "./media/centralDoBrasilSemFundo3.png",
+    linkTitulo: "https://pt.wikipedia.org/wiki/Central_do_Brasil_(filme)",
+    posicao:1
 }
 
 
@@ -17,8 +19,10 @@ const filme2 = {
     IMDB: 8.6,
     indicadoOscar: true,
     premiosInternacionais: ["Festival de Havana", "Bafta", "Writers Guild of America"],
-    imagemFilme:"./media/CidadedeDeus.jpg",
-    linkTitulo:"https://pt.wikipedia.org/wiki/Cidade_de_Deus_(filme)"
+    imagemFilme:"./media/cidadedeDeusSemFundo.png",
+    imagemBg: "./media/cidadedeDeusSemFundo2.png",
+    linkTitulo:"https://pt.wikipedia.org/wiki/Cidade_de_Deus_(filme)",
+    posicao:2
 }
 
 
@@ -44,8 +48,10 @@ const filme5 = {
     IMDB: 8.3,
     indicadoOscar: true,
     premiosInternacionais: ["Cannes", "Festival Cartagena", "San Francisco International Film Festival"],
-    imagemFilme:"./media/PAGADOR.jpg",
-    linkTitulo: "https://pt.wikipedia.org/wiki/O_Pagador_de_Promessas"
+    imagemFilme:"./media/pagadorDePromessasSemFundo.png",
+    imagemBg: "./media/pagadorDePromessasSemFundo2.png",
+    linkTitulo: "https://pt.wikipedia.org/wiki/O_Pagador_de_Promessas",
+    posicao:3
 }
 
 // Média de notas no IMDB dos filmes brasileiros
@@ -125,11 +131,16 @@ const busca = (arrayObjeto, string) => {
 
 const main = document.getElementById("main");
 const div = document.createElement("div");
-div.setAttribute("id", "containerSection");
+div.setAttribute("id", "containerAllSection");
+
+
+//função que carrega os cards na home
+main.addEventListener(onload, addItem(div, main))
+
 
 // A função que cria as sections:
 
-    function addItem(div, main){
+function addItem(div, main){
 
     for(i of filmesBrasileiros){
         imprimeElemento(i, div)
@@ -138,26 +149,31 @@ div.setAttribute("id", "containerSection");
     main.insertAdjacentElement("beforeend", div)
 
 }
-main.addEventListener(onload, addItem(div, main))
-// addItem(div, main)
+
+
 
 // A função recebe um objeto e a div container de sections e imprime os cards na tela.
 
 function imprimeElemento(objeto, div){
-    const section = document.createElement("section");
-        section.innerHTML += `<img src= ${objeto.imagemFilme} alt="Imagem promocional do filme "${objeto.titulo}"/>`
-        const ul = document.createElement("ul")
+        const divSection = document.createElement("div");
+        divSection.setAttribute("class", "containerSection")
+        divSection.setAttribute("id", `containerSection${objeto.posicao}`);
+        divSection.style =`background-image:url(${objeto.imagemBg})`;
+        const section = document.createElement("section");
+        section.setAttribute("id", `section${objeto.posicao}`);
+        section.innerHTML += `<img id="imagem${objeto.posicao}" src= ${objeto.imagemFilme} alt="imagens do filme"${objeto.titulo}"/>`
+        let ul = document.createElement("ul");
         ul.innerHTML += `<li><a id="titulo" href=${objeto.linkTitulo} target="_blank">${objeto.titulo}</a></li>`
-        ul.innerHTML += `<li>Ano: ${objeto.ano}</li>`
-        ul.innerHTML += `<li>IMDB: ${objeto.IMDB}</li>`
-        ul.innerHTML += `<li>Indicado ao Oscar</li>`
-        ul.innerHTML +=`<li> Prêmios Internacionais: ${i.premiosInternacionais.join(`, `)} </li>`
+        ul.innerHTML += `<li id="textoLi">Ano: ${objeto.ano}</li>`
+        ul.innerHTML += `<li id="textoLi">IMDB: ${objeto.IMDB}</li>`
+        ul.innerHTML += `<li id="textoLi">Indicado ao Oscar</li>`
+        ul.innerHTML +=`<li id="textoLi"> Prêmios Internacionais: ${i.premiosInternacionais.join(`, `)} </li>`
         section.appendChild(ul);
         section.insertAdjacentElement("beforeend", ul)
-        div.appendChild(section)
-        div.insertAdjacentElement("beforeend", section)
+        divSection.appendChild(section)
+        div.appendChild(divSection)
+        div.insertAdjacentElement("beforeend", divSection)
 }
-
 
 
 // A função recebe o input, remove a div das sections e imprime o filme pesquisado.
@@ -171,12 +187,23 @@ function pesquisa(event){
         alert("Digite alguma coisa para realizar a busca")
         hideAlert()
     }
-    document.querySelector("#containerSection").remove()
+    document.querySelector("#containerAllSection").remove()
     const objeto = busca(filmesBrasileiros, string)
     const div = document.createElement("div");
-    div.setAttribute("id", "containerBusca"); 
+    div.setAttribute("class", "containerBusca"); 
+    div.setAttribute("id", "containerAllSection")
     imprimeElemento(objeto, div)
     main.appendChild(div)
     main.insertAdjacentElement("beforeend", div)
 }
 
+//A função de retorno à página inicial?
+
+function paginaInicial(event){
+    event.preventDefault()  
+    const main = document.querySelector("main")
+    document.querySelector("#containerAllSection").remove()
+    const div = document.createElement("div"); 
+    div.setAttribute("id", "containerAllSection")
+    addItem(div, main)
+}
